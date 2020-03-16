@@ -40,9 +40,9 @@ class NoteController extends BaseController
 	protected function addAction()
 	{
 		if (static::$Model::add_note(static::$Request['post']['username'],static::$Request['post']['email'],static::$Request['post']['text']))
-			$data=['text'=>'<p class="lead" style="color:red;">Запись добавлена</p>'];
+			$data=['text'=>'Запись добавлена'];
 		else
-			$data=['text'=>'<p class="lead" style="color:red;">Ошибка добавления записи</p>'];
+			$data=['text'=>'Ошибка добавления записи'];
 		self::indexAction($data);
 	}
 	
@@ -50,25 +50,25 @@ class NoteController extends BaseController
 	{
 		if (!\App\Application::IsAdmin())
 		{
-			$data=['text'=>'<p class="lead" style="color:red;">Перелогиньтесь! Ошибка при редактировании записи</p>'];
+			$data=['text'=>'Перелогиньтесь! Ошибка при редактировании записи'];
 		}
 		else
 			if (static::$Model::edit_note(static::$Request['get']['id'],static::$Request['post']['text']))
-				$data=['text'=>'<p class="lead" style="color:red;">Запись Отредактирована</p>'];
+				$data=['text'=>'Запись Отредактирована'];
 			else
-				$data=['text'=>'<p class="lead" style="color:red;">Ошибка при редактировании записи</p>'];
+				$data=['text'=>'Ошибка при редактировании записи'];
 		self::indexAction($data);
 	}
 	
 	protected function aquireAction()
 	{
 		if (!\App\Application::IsAdmin())
-			$data=['text'=>'<p class="lead" style="color:red;">Перелогиньтесь! Ошибка при редактировании записи</p>'];
+			$data=['text'=>'Перелогиньтесь! Ошибка при редактировании записи'];
 		else
 			if (static::$Model::revert_status(static::$Request['get']['id']))
-				$data=['text'=>'<p class="lead" style="color:red;">Запись Отредактирована</p>'];
+				$data=['text'=>'Запись Отредактирована'];
 			else
-				$data=['text'=>'<p class="lead" style="color:red;">Ошибка при редактировании записи</p>'];
+				$data=['text'=>'Ошибка при редактировании записи'];
 		self::indexAction($data);
 	}
 }

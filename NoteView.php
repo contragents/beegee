@@ -8,7 +8,7 @@ class NoteView extends BaseView
 	{
 		$prepared_data='';
 		if (isset($data['text']))
-			$prepared_data .= $data['text'];
+			$prepared_data .= '<p class="lead" style="color:red;">'.$data['text'].'</p>';
 		$prepared_data .= "<table class=\"table\">";
 		if (isset($data['rows']))
 		{
